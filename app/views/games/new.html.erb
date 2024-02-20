@@ -1,0 +1,29 @@
+<div class="vh-100 d-flex flex-column justify-content-center">
+
+  <h1 class="text-center text-danger-emphasis">
+    New Game
+  </h1>
+
+  <div class="d-flex justify-content-center mt-3">
+    <% @grid.each do |character| %>
+        <div class="bg-warning-subtle shadow-sm p-3 me-2"><%= character %></div>
+    <% end %>
+  </div>
+
+  <div class="d-flex justify-content-center m-5">
+    <form class="w-50" action="/score" method= "post" data-turbo="false">
+
+      <p>What is the longest word you can find?</p>
+
+      <div class="d-flex">
+        <input type="text" class="form-control" name="word" placeholder="Input your word here">
+        <input class="ms-4 px-4 bg-body rounded border border-secondary-subtle text-body-tertiary" type="submit" value="Play">
+      </div>
+
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= hidden_field_tag 'grid', @grid %>
+
+    </form>
+  </div>
+
+</div>
